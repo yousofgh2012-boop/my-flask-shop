@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;700&family=Vazirmatn:wght@300;400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* پیش‌بارگذاری تمام تصاویر در حافظه مرورگر */
+body::before {
+    content: "";
+    display: none;
+    background: 
+        url('../images/bg1.png'),
+        url('../images/bg2.jpg'),
+        url('../images/bg3.jpg'),
+        url('../images/bg4.jpg'),
+        url('../images/bg5.jpg'),
+        url('../images/bg6.jpg'),
+        url('../images/bg7.jpg'),
+        url('../images/bg8.jpg'),
+        url('../images/bg9.jpg'),
+        url('../images/bg10.jpg'),
+        url('../images/bg11.png');
+}
+
+body {
+    color: white;
+    background-color: #000;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* لایه ثابت پس‌زمینه - کاملاً جدا شده از اسکرول برای بهترین کارکرد در موبایل */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* حل مشکل ارتفاع متغیر مرورگرهای موبایل (مثل آدرس‌بار) */
+    height: 100dvh; 
+    z-index: -1;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: slideBg 33s infinite ease-in-out;
+}
+
+/* انیمیشن تعویض عکس‌ها بدون حرکت افقی برای جلوگیری از ایجاد سیاهی در موبایل */
+@keyframes slideBg {
+    0%, 8.5% {
+        background-image: url('../images/bg1.png');
+    }
+    9%, 17.5% {
+        background-image: url('../images/bg2.jpg');
+    }
+    18%, 26.5% {
+        background-image: url('../images/bg3.jpg');
+    }
+    27%, 35.5% {
+        background-image: url('../images/bg4.jpg');
+    }
+    36%, 44.5% {
+        background-image: url('../images/bg5.jpg');
+    }
+    45%, 53.5% {
+        background-image: url('../images/bg6.jpg');
+    }
+    54%, 62.5% {
+        background-image: url('../images/bg7.jpg');
+    }
+    63%, 71.5% {
+        background-image: url('../images/bg8.jpg');
+    }
+    72%, 80.5% {
+        background-image: url('../images/bg9.jpg');
+    }
+    81%, 89.5% {
+        background-image: url('../images/bg10.jpg');
+    }
+    90%, 99.5% {
+        background-image: url('../images/bg11.png');
+    }
+    100% {
+        background-image: url('../images/bg1.png');
+    }
+}
+
+/* منو */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(15px);
+    z-index: 999;
+}
+
+.brand {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #d4af37;
+    line-height: 2;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+/* هدر (خانه) */
+header {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/bg1.png') no-repeat center center/cover;
+    padding-top: 70px;
+}
+
+.logo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: white;
+    padding: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 35px gold;
+    transition: .4s;
+    display: block;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px gold;
+}
+
+h1 {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 65px;
+    color: #d4af37;
+    text-shadow: 0 0 15px gold;
+    margin-bottom: 20px;
+    line-height: 2;
+}
+
+header p {
+    font-size: 24px;
+    color: #ddd;
+    margin-bottom: 35px;
+}
+
+.btn {
+    background: #d4af37;
+    color: black;
+    padding: 16px 45px;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: .4s;
+}
+
+.btn:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* بخش‌ها */
+section {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 45px;
+    color: #d4af37;
+    margin-bottom: 45px;
+    line-height: 2;
+}
+
+/* محصولات */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: rgba(27, 27, 27, 0.85);
+    padding: 30px 20px;
+    border: 1px solid #d4af37;
+    border-radius: 20px;
+    transition: .4s;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* قاب دایره‌ای */
+.card-img-wrap {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #d4af37;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: #000;
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px gold;
+}
+
+.card:hover .card-img-wrap {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+}
+
+.card:hover h3 {
+    color: #d4af37;
+}
+
+/* درباره ما */
+#about p {
+    font-size: 20px;
+    line-height: 2;
+    max-width: 850px;
+    margin: auto;
+}
+
+/* تماس */
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.phone,
+.whatsapp,
+.map,
+.neshan,
+.instagram {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 35px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 220px;
+    text-align: center;
+    transition: .3s;
+}
+
+.phone {
+    background: #d4af37;
+    color: black;
+}
+
+.whatsapp {
+    background: #25D366;
+    color: white;
+}
+
+.map,
+.neshan,
+.instagram {
+    background: #d4af37;
+    color: black;
+}
+
+.phone:hover,
+.whatsapp:hover,
+.map:hover,
+.neshan:hover,
+.instagram:hover {
+    transform: scale(1.05);
+}
+
+/* فوتر */
+footer {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    text-align: center;
+    margin-top: 80px;
+    color: #999;
+}
+
+/* واتساپ شناور */
+.float-whatsapp {
+    position: fixed;
+    left: 25px;
+    bottom: 25px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 0 20px #25D366;
+}
+
+/* موبایل */
+@media(max-width:768px) {
+    nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .brand {
+        font-size: 30px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+    section {
+        padding: 70px 5%;
+    }
+}
